@@ -7,7 +7,7 @@
 
 ## Start project in Development Mode
 
-## Requirements
+### Requirements
 * .NET Core 3.1+
 
 ### Start the project
