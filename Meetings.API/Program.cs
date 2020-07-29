@@ -1,6 +1,5 @@
 using System;
 
-using Meetings.Data;
 using Meetings.Data.Data;
 
 using Microsoft.AspNetCore.Hosting;

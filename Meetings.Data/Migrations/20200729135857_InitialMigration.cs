@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Meetings.Data.Migrations
@@ -8,8 +9,8 @@ namespace Meetings.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Meetings",
-                columns: table => new
+                "Meetings",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
@@ -24,8 +25,8 @@ namespace Meetings.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Participants",
-                columns: table => new
+                "Participants",
+                table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
@@ -38,45 +39,47 @@ namespace Meetings.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MeetingParticipants",
-                columns: table => new
+                "MeetingParticipants",
+                table => new
                 {
                     MeetingId = table.Column<int>(nullable: false),
                     ParticipantId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MeetingParticipants", x => new { x.MeetingId, x.ParticipantId });
+                    table.PrimaryKey("PK_MeetingParticipants", x => new {x.MeetingId, x.ParticipantId});
+
                     table.ForeignKey(
-                        name: "FK_MeetingParticipants_Meetings_MeetingId",
-                        column: x => x.MeetingId,
-                        principalTable: "Meetings",
-                        principalColumn: "Id",
+                        "FK_MeetingParticipants_Meetings_MeetingId",
+                        x => x.MeetingId,
+                        "Meetings",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
+
                     table.ForeignKey(
-                        name: "FK_MeetingParticipants_Participants_ParticipantId",
-                        column: x => x.ParticipantId,
-                        principalTable: "Participants",
-                        principalColumn: "Id",
+                        "FK_MeetingParticipants_Participants_ParticipantId",
+                        x => x.ParticipantId,
+                        "Participants",
+                        "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_MeetingParticipants_ParticipantId",
-                table: "MeetingParticipants",
-                column: "ParticipantId");
+                "IX_MeetingParticipants_ParticipantId",
+                "MeetingParticipants",
+                "ParticipantId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MeetingParticipants");
+                "MeetingParticipants");
 
             migrationBuilder.DropTable(
-                name: "Meetings");
+                "Meetings");
 
             migrationBuilder.DropTable(
-                name: "Participants");
+                "Participants");
         }
     }
 }

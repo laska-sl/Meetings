@@ -1,6 +1,4 @@
-﻿using System;
-
-using Meetings.Data.Models;
+﻿using Meetings.Data.Models;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +6,9 @@ namespace Meetings.Data.Data
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
+        }
 
         public DbSet<Meeting> Meetings { get; set; }
 
@@ -19,7 +19,7 @@ namespace Meetings.Data.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MeetingParticipant>()
-                .HasKey(mp => new { mp.MeetingId, mp.ParticipantId });
+                .HasKey(mp => new {mp.MeetingId, mp.ParticipantId});
 
             modelBuilder.Entity<MeetingParticipant>()
                 .HasOne(mp => mp.Meeting)

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Meetings.Data.Models
+﻿namespace Meetings.Data.Models
 {
     public class MeetingParticipant
     {

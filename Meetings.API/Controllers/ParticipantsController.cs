@@ -32,10 +32,10 @@ namespace Meetings.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddParticipants(ParticipantForCreationDTO participant, int meetingId)
         {
-            var meetingQuery = new GetMeetingQuery(meetingId);
-            var meeting = await this.mediator.Send(meetingQuery);
+            var meetingExistsQuery = new MeetingExistsQuery(meetingId);
+            var meetingExists = await this.mediator.Send(meetingExistsQuery);
 
-            if (meeting == null)
+            if (meetingExists)
             {
                 return this.NotFound("There is no meeting with such Id");
             }
@@ -63,10 +63,10 @@ namespace Meetings.API.Controllers
         [Route("{participantId}/Remove")]
         public async Task<IActionResult> RemoveParticipant(int meetingId, int participantId)
         {
-            var meetingQuery = new GetMeetingQuery(meetingId);
-            var meeting = await this.mediator.Send(meetingQuery);
+            var meetingExistsQuery = new MeetingExistsQuery(meetingId);
+            var meetingExists = await this.mediator.Send(meetingExistsQuery);
 
-            if (meeting == null)
+            if (meetingExists)
             {
                 return this.NotFound("There is no meeting with such Id");
             }
