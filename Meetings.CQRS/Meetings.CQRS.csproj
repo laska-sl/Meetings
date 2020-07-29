@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <UserSecretsId>90bf084d-c79e-4745-97ab-58d66d826b1b</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="MediatR" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Meetings.CQRS.Abstractions\Meetings.CQRS.Abstractions.csproj" />
+    <ProjectReference Include="..\Meetings.Data\Meetings.Data.csproj" />
+  </ItemGroup>
+
+</Project>
