@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using MediatR;
@@ -30,6 +31,11 @@ namespace Meetings.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateMeeting(MeetingForCreationDTO meetingForCreationDTO)
         {
+            if (string.IsNullOrEmpty(meetingForCreationDTO.Title) || meetingForCreationDTO.StartTime == DateTime.MinValue)
+            {
+                return this.BadRequest("Invalid input");
+            }
+
             var command = new CreateMeetingCommand(meetingForCreationDTO);
 
             await this.mediator.Send(command);
