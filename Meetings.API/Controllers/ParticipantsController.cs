@@ -35,7 +35,7 @@ namespace Meetings.API.Controllers
             var meetingExistsQuery = new MeetingExistsQuery(meetingId);
             var meetingExists = await this.mediator.Send(meetingExistsQuery);
 
-            if (meetingExists)
+            if (!meetingExists)
             {
                 return this.NotFound("There is no meeting with such Id");
             }
@@ -66,7 +66,7 @@ namespace Meetings.API.Controllers
             var meetingExistsQuery = new MeetingExistsQuery(meetingId);
             var meetingExists = await this.mediator.Send(meetingExistsQuery);
 
-            if (meetingExists)
+            if (!meetingExists)
             {
                 return this.NotFound("There is no meeting with such Id");
             }
